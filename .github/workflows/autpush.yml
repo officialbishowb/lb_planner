@@ -59,6 +59,8 @@ jobs:
       run: |
         cd /tmp/test_repo
         git add .
+        git config --global user.email "n/a"
+        git config --global user.name "n/a"
         git commit -m "Push from lb_planner app branch"
         git push origin main
 
