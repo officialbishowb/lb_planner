@@ -20,37 +20,9 @@ jobs:
 
     - name: Copy repository contents to temporary directory
       run: |
-        mkdir -p /tmp/lb_planner
-        cp -r . /tmp/lb_planner
+        mkdir -p /tmp/
+        cp -r . /tmp/
         ls -la /tmp/lb_planner
-
-    - name: Checkout lbplanner-app repo
-      uses: actions/checkout@v3
-      with:
-        repository: officialbishowb/test_repo
-        path: test_repo
-        token: ${{ secrets.GITHUB_TOKEN }}
-        ref: main
-    - name: Delete the test_repo/.git and all its contents to avoid conflicts
-      run: |
-        rm -rf test_repo/.git
-        rm -rf test_repo/*
-        ls -la test_repo
-        
-    - name: Copy repository contents to lbplanner-app repo
-      run: |
-        cp -r /tmp/lb_planner/. test_repo
-        ls -la lb_planner/
-    - name: Commit and push changes
-      run: |
-        ls -la
-        cd test_repo
-        git config --local user.email "N/A"
-        git config --local user.name "N/A"
-        git add .
-        git commit -m "Push from lb_planner app branch"
-        git push -u origin main
-
 
     
 
