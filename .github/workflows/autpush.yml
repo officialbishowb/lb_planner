@@ -17,6 +17,7 @@ jobs:
       run: |
         mkdir -p /tmp/lb_planner
         cp -r . /tmp/lb_planner
+        ls -la /tmp/lb_planner
 
     - name: Checkout lbplanner-app repo
       uses: actions/checkout@v2
@@ -29,6 +30,7 @@ jobs:
     - name: Copy repository contents to lbplanner-app repo
       run: |
         cp -r /tmp/lb_planner/. test_repo
+        ls -la test_repo
     - name: Commit and push changes
       run: |
         cd test_repo
