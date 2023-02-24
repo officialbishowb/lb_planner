@@ -21,7 +21,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-directory: '${{ github.workspace }}/lb_planner'
+        source-directory: '${{ github.workspace }}/'
         destination-github-username: 'officialbishowb'
         destination-repository-name: 'test_repo'
         target-branch: main
