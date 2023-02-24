@@ -43,7 +43,9 @@ jobs:
 
     - name: Copy files from source repository to target repository
       run: |
+
         cp -r /tmp/lb_planner/* /tmp/test_repo/
+        cp -r /tmp/lb_planner/.git /tmp/test_repo/
         ls -la /tmp/test_repo
 
     - name: Clean up by changing the origin and removing the old files except .git
