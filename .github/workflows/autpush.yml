@@ -38,7 +38,7 @@ jobs:
 
     - name: Copy target repository contents to temporary directory
       run: |
-        cp -r . /tmp/ 
+        cp -r test_repo /tmp/
         ls -la /tmp/test_repo
 
     - name: Copy files from source repository to target repository
