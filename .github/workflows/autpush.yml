@@ -38,6 +38,7 @@ jobs:
         ls -la test_repo
     - name: Commit and push changes
       run: |
+        ls -la
         cd test_repo
         git config --local user.email "N/A"
         git config --local user.name "N/A"
