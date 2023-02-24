@@ -5,6 +5,10 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
 jobs:
   push-to-app-repo:
     name: Push to lbplanner-app repo from app branch
@@ -23,12 +27,6 @@ jobs:
         mkdir -p /tmp/
         cp -r . /tmp/
         ls -la /tmp/lb_planner
-    - name: Clean up the source repository by removing .git directory
-      run: |
-        rm -rf /tmp/lb_planner/.git
-        cd /tmp/lb_planner
-        git init
-        git remote add origin ${{ secrets.TARGET_REPO }}
 
     - name: Checkout target repository
       uses: actions/checkout@v3
@@ -48,6 +46,15 @@ jobs:
       run: |
         cp -r /tmp/lb_planner/* /tmp/test_repo/
         ls -la /tmp/test_repo
+
+    - name: Clean up by changing the origin and removing the old files except .git
+      run: |
+        cd /tmp/test_repo
+        git remote set-url origin ${{ secrets.TARGET_REPO }}
+        mv .git /tmp/
+        rm -rf *
+        mv /tmp/.git .
+        
       
     - name: Commit and push changes
       run: |
