@@ -20,16 +20,17 @@ jobs:
         ls -la /tmp/lb_planner
 
     - name: Checkout lbplanner-app repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: officialbishowb/test_repo
         path: test_repo
         token: ${{ secrets.GITHUB_TOKEN }}
         ref: main
-    - name: Delete the test_repo/.git and all its contents
+    - name: Delete the test_repo/.git and all its contents to avoid conflicts
       run: |
         rm -rf test_repo/.git
         rm -rf test_repo/*
+        ls -la test_repo
         
     - name: Copy repository contents to lbplanner-app repo
       run: |
