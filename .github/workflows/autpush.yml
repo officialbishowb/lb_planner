@@ -32,6 +32,8 @@ jobs:
     - name: Commit and push changes
       run: |
         cd test_repo
+        git config --local user.email "N/A"
+        git config --local user.name "N/A"
         git add .
         git commit -m "Update from lb_planner app branch"
         git push
