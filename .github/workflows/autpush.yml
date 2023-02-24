@@ -13,15 +13,15 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
-    - name: Find lb_planner folder
+    - name: Copy repository contents to temporary directory
       run: |
         mkdir ${{ github.workspace }}/lb_planner_temp
-        cp -r ${{ github.workspace }} ${{ github.workspace }}/lb_planner_temp/
+        cp -r "${{ github.workspace }}/" "${{ github.workspace }}/lb_planner_temp"
     - uses: cpina/github-action-push-to-another-repository@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-directory: '${{ github.workspace }}/lb_planner_temp/'
+        source-directory: '${{ github.workspace }}/lb_planner_temp'
         destination-github-username: 'officialbishowb'
         destination-repository-name: 'test_repo'
         target-branch: main
