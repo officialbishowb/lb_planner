@@ -16,8 +16,9 @@ jobs:
     - name: Copy repository contents to temporary directory
       run: |
         pwd
+        ls -la
         mkdir ${{ github.workspace }}/lb_planner_temp
-        cp -r ./lb_planner/* ${{ github.workspace }}/lb_planner_temp
+        cp -r * ${{ github.workspace }}/lb_planner_temp
     - uses: cpina/github-action-push-to-another-repository@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
