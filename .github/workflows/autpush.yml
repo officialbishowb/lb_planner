@@ -51,6 +51,7 @@ jobs:
 
     - name: Copy files from lb_planner to test_repo
       run: |
+        cp -r /tmp/lb_planner/.git /tmp/test_repo/
         cp -r /tmp/lb_planner/* /tmp/test_repo/
         ls -la /tmp/test_repo
       
