@@ -38,8 +38,7 @@ jobs:
 
     - name: Copy target repository contents to temporary directory
       run: |
-        mkdir -p /tmp/
-        cp -r . /tmp/
+        cp -r . /tmp/ 
         ls -la /tmp/test_repo
 
     - name: Copy files from source repository to target repository
@@ -54,7 +53,7 @@ jobs:
         mv .git /tmp/
         rm -rf *
         mv /tmp/.git .
-        
+
       
     - name: Commit and push changes
       run: |
