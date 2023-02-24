@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: List files in lb_planner
-    - run: ls /home/runner/work/lb_planner/lb_planner
+      run: ls /home/runner/work/lb_planner/lb_planner
     - uses: cpina/github-action-push-to-another-repository@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
