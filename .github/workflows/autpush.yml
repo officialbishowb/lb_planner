@@ -54,6 +54,12 @@ jobs:
         cp -r /tmp/lb_planner/* /tmp/test_repo/
         ls -la /tmp/test_repo
       
+    - name: Commit and push changes
+      run: |
+        cd /tmp/test_repo
+        git add .
+        git commit -m "Push from lb_planner app branch"
+        git push origin main
 
     
 
