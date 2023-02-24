@@ -23,6 +23,40 @@ jobs:
         mkdir -p /tmp/
         cp -r . /tmp/
         ls -la /tmp/lb_planner
+    - name: Clean up repository by removing .git directory and initializing new git repository
+      run: |
+        rm -rf /tmp/lb_planner/.git
+        cd /tmp/lb_planner
+        git init
+        git remote add origin ${{ secrets.TARGET_REPO }}
+
+    - name: Checkout target repository
+      uses: actions/checkout@v3
+      with:
+        repository: officialbishowb/test_repo
+        path: test_repo
+        token: ${{ secrets.GITHUB_TOKEN }}
+        ref: main
+
+    - name: Copy repository contents to temporary directory
+      run: |
+        mkdir -p /tmp/
+        cp -r . /tmp/
+        ls -la /tmp/test_repo
+
+    - name: Clean up repository by removing .git directory and deleting all files
+      run: |
+        rm -rf /tmp/test_repo/.git
+        rm -rf /tmp/test_repo/*
+
+    - name: Copy files from lb_planner to test_repo
+      run: |
+        cp -r /tmp/lb_planner/* /tmp/test_repo/
+        ls -la /tmp/test_repo
+      
+
+    
+
 
     
 
