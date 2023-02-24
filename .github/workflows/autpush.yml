@@ -11,7 +11,7 @@ jobs:
     name: Push to lbplanner-app repo from app branch
     runs-on: ubuntu-latest
     steps:
-    - run: ls /home/runner/work/ 
+    - run: ls /home/runner/work/lb_planner
     - uses: cpina/github-action-push-to-another-repository@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
