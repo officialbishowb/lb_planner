@@ -16,7 +16,7 @@ jobs:
     - name: Find lb_planner folder
       run: |
         mkdir ${{ github.workspace }}/lb_planner_temp
-        cp -r ${{ github.workspace }}/lb_planner/* ${{ github.workspace }}/lb_planner_temp/
+        cp -r ${{ github.workspace }}/lb_planner ${{ github.workspace }}/lb_planner_temp/
     - uses: cpina/github-action-push-to-another-repository@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
