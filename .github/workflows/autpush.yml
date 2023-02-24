@@ -17,13 +17,13 @@ jobs:
       run: |
         pwd
         ls -la
-        mkdir ${{ github.workspace }}/lb_planner_temp
-        cp -r * ${{ github.workspace }}/lb_planner_temp
+        mkdir ../../lb_planner_temp
+        cp -r * ../../lb_planner_temp
     - uses: cpina/github-action-push-to-another-repository@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-directory: '${{ github.workspace }}/lb_planner_temp'
+        source-directory: '../../lb_planner_temp'
         destination-github-username: 'officialbishowb'
         destination-repository-name: 'test_repo'
         target-branch: main
