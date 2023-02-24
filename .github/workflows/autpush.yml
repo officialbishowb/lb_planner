@@ -23,7 +23,7 @@ jobs:
         mkdir -p /tmp/
         cp -r . /tmp/
         ls -la /tmp/lb_planner
-    - name: Clean up repository by removing .git directory and initializing new git repository
+    - name: Clean up the source repository by removing .git directory
       run: |
         rm -rf /tmp/lb_planner/.git
         cd /tmp/lb_planner
@@ -38,20 +38,14 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         ref: main
 
-    - name: Copy repository contents to temporary directory
+    - name: Copy target repository contents to temporary directory
       run: |
         mkdir -p /tmp/
         cp -r . /tmp/
         ls -la /tmp/test_repo
 
-    - name: Clean up repository by removing .git directory and deleting all files
+    - name: Copy files from source repository to target repository
       run: |
-        rm -rf /tmp/test_repo/.git
-        rm -rf /tmp/test_repo/*
-
-    - name: Copy files from lb_planner to test_repo
-      run: |
-        cp -r /tmp/lb_planner/.git /tmp/test_repo/
         cp -r /tmp/lb_planner/* /tmp/test_repo/
         ls -la /tmp/test_repo
       
