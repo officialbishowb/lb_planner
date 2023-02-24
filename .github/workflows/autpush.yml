@@ -40,7 +40,7 @@ jobs:
     - name: Copy repository contents to lbplanner-app repo
       run: |
         cp -r /tmp/lb_planner/. test_repo
-        ls -la test_repo
+        ls -la lb_planner/
     - name: Commit and push changes
       run: |
         ls -la
