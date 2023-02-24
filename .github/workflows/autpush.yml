@@ -4,7 +4,6 @@ name: Push to organization repos
 on:
   release:
     types: [published]
-    branches: ['app']
   workflow_dispatch:
 jobs:
   push-to-app-repo:
@@ -13,6 +12,12 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
+      with:
+        repository: officialbishowb/lb_planner
+        path: lb_planner
+        token: ${{ secrets.GITHUB_TOKEN }}
+        ref: app
+
     - name: Copy repository contents to temporary directory
       run: |
         mkdir -p /tmp/lb_planner
