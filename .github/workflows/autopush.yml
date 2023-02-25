@@ -46,7 +46,7 @@ jobs:
           uses: actions-js/push@master
           with:
             github_token: ${{ secrets.PA_TOKEN }}
-            message: "Mirrored ${{ github.event.head_commit.message }}"
+            message: "Mirrored ${{ github.event.head_commit.message }} by ${{ github.event.pusher.name }}"
             branch: main
             repository: officialbishowb/test_repo    
             directory: dest
@@ -81,7 +81,7 @@ jobs:
           uses: actions-js/push@master
           with:
             github_token: ${{ secrets.PA_TOKEN }}
-            message: "Mirrored ${{ github.event.head_commit.message }}"
+            message: "Mirrored ${{ github.event.head_commit.message }} by ${{ github.event.pusher.name }}"
             branch: main
             repository: officialbishowb/test_repo_2   
             directory: dest
