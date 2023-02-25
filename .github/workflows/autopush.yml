@@ -41,18 +41,12 @@ jobs:
             cd dest
             git config --global --add safe.directory .
 
-        - name: Commit the changes
-          run: |
-            cd dest
-            git add .
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git config --global user.name "github-actions[bot]"
-            git commit -m "auto push from lb_planner"
-        
-        - name: Push the changes
-          run: |
-            cd dest
-            ls -la
-            
+        - name: Commit and push
+          uses: actions-js/push@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            commit_message: "auto push from lb_planner"
+            branch: main
+            repository: officialbishowb/test_repo            
             
 
