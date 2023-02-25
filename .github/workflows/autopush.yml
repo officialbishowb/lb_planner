@@ -47,12 +47,9 @@ jobs:
             git commit -m "auto push from lb_planner"
         
         - name: Push the changes
-          uses: ad-m/github-push-action@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            repository: officialbishowb/test_repo
-            branch: main
-            force: true
+          run: |
+            cd dest
+            git push origin main --force
             
             
             
