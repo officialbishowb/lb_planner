@@ -45,7 +45,5 @@ jobs:
             commit_options: "--no-verify"
             commit_user_name: "GitHub Actions"
             commit_user_email: "github-actions[bot]@users.noreply.github.com"
-            repository: officialbishowb/test_repo
-            branch: main
-            file_pattern: dest/
+            repository: dest
 
