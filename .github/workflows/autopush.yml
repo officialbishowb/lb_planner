@@ -47,9 +47,11 @@ jobs:
             git commit -m "auto push from lb_planner"
         
         - name: Push the changes
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
             cd dest
-            git push origin main --force
+            git push origin main
             
             
             
