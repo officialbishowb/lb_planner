@@ -1,7 +1,7 @@
 name: Auto Push
 on:
   push:
-    branches: ['main', 'app']
+    branches: ['app']
   workflow_dispatch:
 
 jobs:
