@@ -46,9 +46,8 @@ jobs:
           uses: actions-js/push@master
           with:
             github_token: ${{ secrets.PA_TOKEN }}
-            message: "auto push from lb_planner"
+            message: "Mirrored ${{ github.event.head_commit.message }}"
             branch: main
             repository: officialbishowb/test_repo    
             directory: dest
             
-
