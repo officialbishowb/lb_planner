@@ -14,8 +14,6 @@ on:
 
 jobs:
   push-to-app-repo:
-      permissions:
-        contents: write
       runs-on: ubuntu-latest
       steps:
         - name: Checkout the src repo
@@ -43,7 +41,7 @@ jobs:
         - name: Commit and push
           uses: actions-js/push@master
           with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+            github_token: ${{ secrets.PA_TOKEN }}
             message: "Mirrored ${{ github.event.head_commit.message }} by ${{ github.event.pusher.name }}"
             branch: main
             repository: TGM-HIT/lbplanner-app
