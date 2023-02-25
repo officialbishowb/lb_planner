@@ -9,11 +9,11 @@ on:
     branches: ['main', 'app','moodle']
   workflow_dispatch:
 
-permissions:
-  pull-requests: write
-  issues: write
-  repository-projects: write
-  contents: write
+# permissions:
+#   pull-requests: write
+#   issues: write
+#   repository-projects: write
+#   contents: write
 
 jobs:
   push-to-app-repo:
@@ -45,7 +45,7 @@ jobs:
         - name: Commit and push
           uses: actions-js/push@master
           with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+            github_token: ${{ secrets.PA_TOKEN }}
             message: "auto push from lb_planner"
             branch: main
             repository: officialbishowb/test_repo    
