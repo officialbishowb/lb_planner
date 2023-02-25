@@ -33,7 +33,6 @@ jobs:
       - name: Commit files to target repo
         run: |
           cd app_repo
-          ls -la
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git add .
@@ -41,6 +40,7 @@ jobs:
       - name: Push changes to target repo with token
         run: |
           cd app_repo
+          ls -la
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
