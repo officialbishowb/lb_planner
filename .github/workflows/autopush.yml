@@ -47,7 +47,8 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             message: "auto push from lb_planner"
             branch: main
+            author_name: "officialbishowb"
             repository: officialbishowb/test_repo    
-            directory: dest        
+            directory: dest
             
 
