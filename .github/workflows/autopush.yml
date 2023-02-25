@@ -20,14 +20,14 @@ jobs:
         - name: Checkout the src repo
           uses: actions/checkout@v3
           with:
-            repository: officialbishowb/lb_planner
+            repository: necodeIT/lb_planner
             path: src
             ref: app
           
         - name: Checkout the dest repo
           uses: actions/checkout@v3
           with:
-            repository: officialbishowb/test_repo
+            repository: TGM-HIT/lbplanner-app
             path: dest
             ref: main
         - name: Copy files from src to dest and add it so safe directory
@@ -45,7 +45,7 @@ jobs:
             github_token: ${{ secrets.PA_TOKEN }}
             message: "Mirrored ${{ github.event.head_commit.message }} by ${{ github.event.pusher.name }}"
             branch: main
-            repository: officialbishowb/test_repo    
+            repository: TGM-HIT/lbplanner-app
             directory: dest
 
             
