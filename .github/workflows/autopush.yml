@@ -29,6 +29,8 @@ jobs:
             repository: thehackingtips/test_repo
             path: dest
             ref: main
+            persist-credentials: false
+            token: ${{ secrets.PA_TOKEN }}
         - name: Copy files from src to dest and add it so safe directory
           run: |
             cp -r src/* dest
