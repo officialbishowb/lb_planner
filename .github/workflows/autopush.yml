@@ -3,8 +3,6 @@
 
 name: Auto Push
 on:
-  release:
-    types: [published]
   push:
     branches: ['main', 'app','moodle']
   workflow_dispatch:
