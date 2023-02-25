@@ -44,4 +44,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: officialbishowb/test_repo
           branch: main
-          workdir: app_repo
+          directory: app_repo
