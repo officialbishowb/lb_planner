@@ -1,73 +1,50 @@
-# Push lbplanner-app from lb_planner app branch
+# Push from officialbishowb/lb_planner repo to officialbishowb/test_repo repo
+    
 
-name: Push to organization repos
+name: Auto Push
 on:
   release:
     types: [published]
+  push:
+    branches: ['main']
+
   workflow_dispatch:
 
-permissions:
-  contents: write
-  packages: write
 jobs:
   push-to-app-repo:
-    name: Push to lbplanner-app repo from app branch
+    name: Push to app repo
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
-      with:
-        repository: officialbishowb/lb_planner
-        path: lb_planner
-        token: ${{ secrets.GITHUB_TOKEN }}
-        ref: app
-
-    - name: Copy repository contents to temporary directory
-      run: |
-        mkdir -p /tmp/
-        cp -r . /tmp/
-        ls -la /tmp/lb_planner
-
-    - name: Checkout target repository
-      uses: actions/checkout@v3
-      with:
-        repository: officialbishowb/test_repo
-        path: test_repo
-        token: ${{ secrets.GITHUB_TOKEN }}
-        ref: main
-
-    - name: Copy target repository contents to temporary directory
-      run: |
-        cp -r test_repo /tmp/
-        ls -la /tmp/test_repo
-
-    - name: Copy files from source repository to target repository
-      run: |
-
-        cp -r /tmp/lb_planner/* /tmp/test_repo/
-        cp -r /tmp/lb_planner/.git /tmp/test_repo/
-        ls -la /tmp/test_repo
-
-    - name: Clean up by changing the origin and removing the old files except .git
-      run: |
-        cd /tmp/test_repo
-        git remote set-url origin ${{ secrets.TARGET_REPO }}
-        mv .git /tmp/
-        rm -rf *
-        mv /tmp/.git .
-
+      - name: Checkout target repo
+        uses: actions/checkout@v3
+        with:
+          repository: officialbishowb/test_repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: app_repo
+          ref: main
+      - name: Checkout source repo
+        uses: actions/checkout@v3
+        with:
+          path: lb_planner
+          ref: main
+      - name: Copy files from source repo to target repo
+        run: |
+          cp -r lb_planner/* app_repo/
+      - name: Commit files to target repo
+        run: |
+          cd app_repo
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add .
+          git commit -m "Update from lb_planner"
+      - name: Push changes to target repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: officialbishowb/test_repo
+          branch: main
+          
       
-    - name: Commit and push changes
-      run: |
-        cd /tmp/test_repo
-        git add .
-        git config --global user.email "n/a"
-        git config --global user.name "n/a"
-        git commit -m "Push from lb_planner app branch"
-        git push origin main
+          
 
-    
-
-
-    
 
