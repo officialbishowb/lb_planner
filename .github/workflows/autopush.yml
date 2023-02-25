@@ -45,7 +45,7 @@ jobs:
           uses: actions-js/push@master
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
-            commit_message: "auto push from lb_planner"
+            message: "auto push from lb_planner"
             branch: main
             repository: officialbishowb/test_repo            
             
