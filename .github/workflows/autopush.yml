@@ -49,38 +49,4 @@ jobs:
             repository: officialbishowb/test_repo    
             directory: dest
 
-  push-to-moodle-repo:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout the src repo
-          uses: actions/checkout@v3
-          with:
-            repository: officialbishowb/lb_planner
-            path: src
-            ref: moodle
-          
-        - name: Checkout the dest repo
-          uses: actions/checkout@v3
-          with:
-            repository: officialbishowb/test_repo_2
-            path: dest
-            ref: main
-            persist-credentials: false
-        - name: Copy files from src to dest and add it so safe directory
-          run: |
-            cp -r src/* dest
-            git config --global --add safe.directory dest/
-        - name: Add it to safe directory
-          run: |
-            cd dest
-            git config --global --add safe.directory .
-
-        - name: Commit and push
-          uses: actions-js/push@master
-          with:
-            github_token: ${{ secrets.PA_TOKEN }}
-            message: "Mirrored ${{ github.event.head_commit.message }} by ${{ github.event.pusher.name }}"
-            branch: main
-            repository: officialbishowb/test_repo_2   
-            directory: dest
             
