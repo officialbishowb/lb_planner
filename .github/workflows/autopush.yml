@@ -1,7 +1,7 @@
 name: Auto Push to lbplanner-moodle repo
 on:
   push:
-    branches: ['main','moodle']
+    branches: ['moodle']
   workflow_dispatch:
 
 
