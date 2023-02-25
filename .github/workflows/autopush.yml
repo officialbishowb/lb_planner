@@ -33,15 +33,15 @@ jobs:
       - name: Commit files to target repo and push
         run: |
           cd app_repo
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
+          git config --local user.email"github-actions[bot]@users.noreply.github.com"
+          git config --local user.name  "github-actions[bot]"
           git add .
           git commit -m "Update from lb_planner"
-          git push origin main
-      # - name: Push changes to target repo with token
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     repository: officialbishowb/test_repo
-      #     branch: main
-      #     workdir: app_repo
+
+      - name: Push changes to target repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: officialbishowb/test_repo
+          branch: main
+          workdir: app_repo
