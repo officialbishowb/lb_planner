@@ -9,14 +9,15 @@ on:
     branches: ['main', 'app','moodle']
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+  contents: write
 
 jobs:
   push-to-app-repo:
-
       runs-on: ubuntu-latest
-      permissions:
-        contents: write
-        pull-requests: write
       steps:
         - name: Checkout the src repo
           uses: actions/checkout@v3
@@ -47,7 +48,6 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             message: "auto push from lb_planner"
             branch: main
-            author_name: "officialbishowb"
             repository: officialbishowb/test_repo    
             directory: dest
             
