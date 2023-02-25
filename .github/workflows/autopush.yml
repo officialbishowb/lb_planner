@@ -33,7 +33,7 @@ jobs:
       - name: Commit files to target repo and push
         run: |
           cd app_repo
-          git config --local user.email"github-actions[bot]@users.noreply.github.com"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name  "github-actions[bot]"
           git add .
           git commit -m "Update from lb_planner"
