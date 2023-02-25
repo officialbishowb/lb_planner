@@ -26,7 +26,7 @@ jobs:
         - name: Checkout the dest repo
           uses: actions/checkout@v3
           with:
-            repository: TGM-HIT/lbplanner-app
+            repository: thehackingtips/test_repo
             path: dest
             ref: main
         - name: Copy files from src to dest and add it so safe directory
@@ -44,7 +44,7 @@ jobs:
             github_token: ${{ secrets.PA_TOKEN }}
             message: "Mirrored ${{ github.event.head_commit.message }} by ${{ github.event.pusher.name }}"
             branch: main
-            repository: TGM-HIT/lbplanner-app
+            repository: thehackingtips/test_repo
             directory: dest
 
             
