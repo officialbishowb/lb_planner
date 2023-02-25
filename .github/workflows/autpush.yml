@@ -39,7 +39,7 @@ jobs:
           git add .
           git commit -m "Update from lb_planner"
       - name: Push changes to target repo
-        working-directory: ./app_repo
+        working-directory: app_repo
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
