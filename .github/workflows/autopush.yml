@@ -1,16 +1,8 @@
-# Push from officialbishowb/lb_planner repo to officialbishowb/test_repo repo
-    
-
 name: Auto Push
 on:
   push:
-    branches: ['main', 'app','moodle']
+    branches: ['main', 'app']
   workflow_dispatch:
-
-# permissions:
-#   contents: write
-#   issues: write
-#   pull-requests: write
 
 jobs:
   push-to-app-repo:
