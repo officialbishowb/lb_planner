@@ -8,13 +8,15 @@ on:
   push:
     branches: ['main', 'app','moodle']
   workflow_dispatch:
-permissions:
-  contents: write
-  pull-requests: write
+
 
 jobs:
   push-to-app-repo:
+
       runs-on: ubuntu-latest
+      permissions:
+        contents: write
+        pull-requests: write
       steps:
         - name: Checkout the src repo
           uses: actions/checkout@v3
@@ -36,17 +38,11 @@ jobs:
             cp -r src/* dest
             git config --global --add safe.directory dest/
 
-        - name: Commit the changes
-          run: |
-            cd dest
-            ls -l
-            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git config --global user.name "github-actions[bot]"
-            git commit -a -m "Auto Push from lb_planner"
-        
-        - name: Push the changes
-          uses: ad-m/github-push-action@master
+        - name: Commit and push files
+          uses: stefanzweifel/git-auto-commit-action@v4
           with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            repository: officialbishowb/test_repo
-            branch: main
+            commit_message: "Auto Push from lbplanner"
+            commit_options: "--no-verify"
+            commit_user_name: "GitHub Actions"
+            commit_user_email: "github-actions[bot]@users.noreply.github.com"
+
