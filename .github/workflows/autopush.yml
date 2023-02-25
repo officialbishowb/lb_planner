@@ -32,11 +32,14 @@ jobs:
             path: dest
             ref: main
             persist-credentials: false
-
         - name: Copy files from src to dest and add it so safe directory
           run: |
             cp -r src/* dest
             git config --global --add safe.directory dest/
+        - name: Add it to safe directory
+          run: |
+            cd dest
+            git config --global --add safe.directory .
 
         - name: Commit the changes
           run: |
