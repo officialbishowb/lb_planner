@@ -31,14 +31,18 @@ jobs:
         - name: Copy files from src to dest
           run: |
             cp -r src/* dest
+            ls -l dest
+            pwd
 
         - name: Commit the changes
           run: |
             cd dest
-            git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git config --local user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git config --global user.name "github-actions[bot]"
             git commit -a -m "Auto Push from lb_planner"
         
+        - name: Specify the Git global safe directory
+          run: git config --global --add safe.directory /home/runner/work/test_repo/test_repo
         - name: Push the changes
           uses: ad-m/github-push-action@master
           with:
