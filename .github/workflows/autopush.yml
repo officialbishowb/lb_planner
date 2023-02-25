@@ -48,5 +48,3 @@ jobs:
             branch: main
             repository: TGM-HIT/lbplanner-app
             directory: dest
-
-            
