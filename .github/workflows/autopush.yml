@@ -30,20 +30,18 @@ jobs:
       - name: Copy files from source repo to target repo
         run: |
           cp -r lb_planner/* app_repo/
-      - name: Commit files to target repo
+      - name: Commit files to target repo and push
         run: |
           cd app_repo
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git add .
           git commit -m "Update from lb_planner"
-      - name: Push changes to target repo with token
-        run: |
-          cd app_repo
-          ls -la
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository: officialbishowb/test_repo
-          branch: main
-          workdir: app_repo
+          git push origin main
+      # - name: Push changes to target repo with token
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     repository: officialbishowb/test_repo
+      #     branch: main
+      #     workdir: app_repo
