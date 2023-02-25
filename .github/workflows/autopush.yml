@@ -12,8 +12,9 @@ on:
 jobs:
   push-to-app-repo:
       permissions:
-        pull-requests: write
         contents: write
+        issues: write
+        pull-requests: write
       runs-on: ubuntu-latest
       steps:
         - name: Checkout the src repo
