@@ -1,0 +1,1 @@
+ D:\\3_projects\\lb_planner\\.dart_tool\\flutter_gen\\gen_l10n\\l10n_en.dart D:\\3_projects\\lb_planner\\.dart_tool\\flutter_gen\\gen_l10n\\l10n.dart:  D:\\3_projects\\lb_planner\\l10n.yaml D:\\3_projects\\lb_planner\\lib/l10n\\intl_en.arb

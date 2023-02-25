@@ -1,17 +1,9 @@
-# Push from officialbishowb/lb_planner repo to officialbishowb/test_repo repo
-    
-
-name: Auto Push to moodle repo
+name: Auto Push to lbplanner-moodle repo
 on:
   push:
-    branches: ['main', 'app','moodle']
+    branches: ['main','moodle']
   workflow_dispatch:
 
-# permissions:
-#   pull-requests: write
-#   issues: write
-#   repository-projects: write
-#   contents: write
 
 jobs:
   push-to-moodle-repo:
@@ -27,9 +19,11 @@ jobs:
         - name: Checkout the dest repo
           uses: actions/checkout@v3
           with:
-            repository: officialbishowb/test_repo_2
+            repository: TGM-HIT/lbplanner-moodle
             path: dest
             ref: main
+            persist-credentials: false
+            token: ${{ secrets.PA_TOKEN }}
         - name: Copy files from src to dest and add it so safe directory
           run: |
             cp -r src/* dest
@@ -45,6 +39,5 @@ jobs:
             github_token: ${{ secrets.PA_TOKEN }}
             message: "Mirrored ${{ github.event.head_commit.message }} by ${{ github.event.pusher.name }}"
             branch: main
-            repository: officialbishowb/test_repo_2
+            repository: TGM-HIT/lbplanner-moodle
             directory: dest
-            
